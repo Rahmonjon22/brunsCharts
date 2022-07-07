@@ -1,12 +1,9 @@
 {
-  "homepage": "http://Rahmonjon22.github.io/brunsCharts",
   "name": "bruns-charts",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
