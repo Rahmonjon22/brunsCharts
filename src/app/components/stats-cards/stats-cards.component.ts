@@ -11,16 +11,19 @@ export class StatsCardsComponent implements OnInit {
   @Input() BgColor: string='';
   @Input() Topic: string='';
   @Input() Icon: string='';
+  @Input() Stats: string='';
   @Input() Count: string='';
   bgColor: string = '';
   topic: string = '';
   icon: string = '';
-  count: number = 0;
+  stats: string = '';
+  count: number = 15000;
   ngOnInit(): void {
   }
   ngOnChanges() {
     this.bgColor = this.BgColor;
     this.topic = this.Topic;
+    this.stats = this.Stats;
     this.icon = this.Icon;
   }
 }
