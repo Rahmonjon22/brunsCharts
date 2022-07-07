@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  baseUrl:"https://ws-api.bruns.dev.local",
   production: false
 };
 
