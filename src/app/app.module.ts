@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { DoughnutChartsComponent } from './components/doughnut-charts/doughnut-charts.component';
+import { ScssCardsComponent } from './components/scss-cards/scss-cards.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DoughnutChartsComponent } from './components/doughnut-charts/doughnut-c
     AppComponent,
     StatsCardsComponent,
     BarChartComponent,
-    DoughnutChartsComponent
+    DoughnutChartsComponent,
+    ScssCardsComponent
   ],
   imports: [
     BrowserModule,

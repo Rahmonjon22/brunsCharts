@@ -1,0 +1,160 @@
+  /* For Desktop */
+//   * {
+//     box-sizing: border-box;
+//     margin: 0;
+//     padding: 0;
+//     scroll-behavior: smooth;
+// }
+
+// html,
+// body {
+//     overflow-x: hidden;
+//     height: 100%;
+
+// }
+
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(75, 86, 90);
+    height: 60px;
+    width: 100%;
+}
+
+.name__person {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-weight: 200;
+    text-shadow: none;
+}
+
+.section__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.div__card {
+    margin: 15px;
+    height: 220px;
+    width: 350px;
+    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+    /*  fonts */
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-weight: 200;
+    text-shadow: none;
+}
+
+.card-1 {
+    background: rgb(252, 193, 150);
+    background: linear-gradient(101deg, rgba(252, 193, 150, 1) 0%, rgba(252, 131, 131, 0.9108018207282913) 31%, rgba(150, 61, 47, 1) 100%, rgba(0, 212, 255, 1) 100%);
+}
+
+.card-2 {
+    background: rgb(139, 206, 253);
+    background: linear-gradient(101deg, rgba(139, 206, 253, 0.8155637254901961) 0%, rgba(88, 174, 246, 1) 49%, rgba(51, 149, 236, 1) 100%, rgba(0, 212, 255, 1) 100%);
+}
+
+.card-3 {
+    background: rgb(182, 215, 217);
+    background: linear-gradient(101deg, rgba(182, 215, 217, 1) 0%, rgba(78, 221, 203, 1) 49%, rgba(51, 221, 197, 1) 100%);
+}
+
+.card__box {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.box__sentence {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 25px;
+    /* border-style: dashed;
+    border-color: black; */
+}
+
+.ionicon {
+    height: 20px;
+    color: white;
+}
+
+.icons {
+    height: 20px;
+    color: white;
+}
+
+.chart__increase {
+    border: 3px;
+    size: 20px;
+    border-width: 5px;
+}
+
+.amount {
+    display: flex;
+    padding-top: 20px;
+    /* border-style: dashed; */
+}
+
+.number_shown {
+    font-size: 25px;
+    font-weight: 500;
+}
+.sentence__two{
+    text-align: start;
+    padding-top: 25%;
+}
+
+  /* For tablets */
+
+ @media screen and (min-width: 502px) and (max-width: 1279px) {
+    .header {
+        height: 60px;
+    }
+    .name__person {
+        font-size: 20px;
+    }
+    
+    .section__card {
+        flex-wrap: wrap;
+    }
+  
+  }
+
+
+
+  /* For mobiles */
+@media screen and (max-width: 501px) {
+    .header {
+        height: 50px;
+    }
+    .name__person {
+        font-size: 15px;
+    }
+    
+    .section__card {
+        flex-direction: column;
+    }
+    
+    .div__card {
+        margin: 10px;
+        height: 180px;
+        width: 300px;
+    }
+  }
+  
+  
+ 
