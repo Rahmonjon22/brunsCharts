@@ -12,12 +12,12 @@ export class StatsCardsComponent implements OnInit {
   @Input() Topic: string='';
   @Input() Icon: string='';
   @Input() Stats: string='';
-  @Input() Count: string='';
+  @Input() Count: number= 0; 
   bgColor: string = '';
   topic: string = '';
   icon: string = '';
   stats: string = '';
-  count: number = 15000;
+  count: number = 0;
   ngOnInit(): void {
   }
   ngOnChanges() {
@@ -25,5 +25,6 @@ export class StatsCardsComponent implements OnInit {
     this.topic = this.Topic;
     this.stats = this.Stats;
     this.icon = this.Icon;
+    this.count = this.Count;
   }
 }

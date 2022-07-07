@@ -1,4 +1,4 @@
-  /* For Desktop */
+/* For Desktop */
 //   * {
 //     box-sizing: border-box;
 //     margin: 0;
@@ -13,8 +13,7 @@
 
 // }
 
-
-  .header {
+.header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +26,7 @@
     color: white;
     font-size: 20px;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-style: normal;
     font-weight: 200;
     text-shadow: none;
@@ -46,12 +45,12 @@
     width: 500px;
     border-radius: 5px;
     justify-content: center;
-    text-align: center;
+
     /*  fonts */
     color: white;
     font-size: 10px;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-style: normal;
     font-weight: 200;
     text-shadow: none;
@@ -59,17 +58,34 @@
 
 .card-1 {
     background: rgb(252, 193, 150);
-    background: linear-gradient(101deg, rgba(252, 193, 150, 1) 0%, rgba(252, 131, 131, 0.9108018207282913) 31%, rgba(150, 61, 47, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    background: linear-gradient(
+        101deg,
+        rgba(252, 193, 150, 1) 0%,
+        rgba(252, 131, 131, 0.9108018207282913) 31%,
+        rgba(150, 61, 47, 1) 100%,
+        rgba(0, 212, 255, 1) 100%
+    );
 }
 
 .card-2 {
     background: rgb(139, 206, 253);
-    background: linear-gradient(101deg, rgba(139, 206, 253, 0.8155637254901961) 0%, rgba(88, 174, 246, 1) 49%, rgba(51, 149, 236, 1) 100%, rgba(0, 212, 255, 1) 100%);
+    background: linear-gradient(
+        101deg,
+        rgba(139, 206, 253, 0.8155637254901961) 0%,
+        rgba(88, 174, 246, 1) 49%,
+        rgba(51, 149, 236, 1) 100%,
+        rgba(0, 212, 255, 1) 100%
+    );
 }
 
 .card-3 {
     background: rgb(182, 215, 217);
-    background: linear-gradient(101deg, rgba(182, 215, 217, 1) 0%, rgba(78, 221, 203, 1) 49%, rgba(51, 221, 197, 1) 100%);
+    background: linear-gradient(
+        101deg,
+        rgba(182, 215, 217, 1) 0%,
+        rgba(78, 221, 203, 1) 49%,
+        rgba(51, 221, 197, 1) 100%
+    );
 }
 
 .card__box {
@@ -113,33 +129,52 @@
     font-size: 25px;
     font-weight: 500;
 }
-.sentence__two{
-    text-align: start;
+.sentence__two {
     padding-top: 25px;
+    h2 {
+        color: white;
+        font-size: 14px;
+        text-align: start;
+        font-style: normal;
+        font-weight: 100;
+        text-shadow: none;
+    }
 }
 
-  /* For tablets */
+/* For tablets */
 
- @media screen and (min-width: 502px) and (max-width: 1279px) {
+@media screen and (min-width: 502px) and (max-width: 1279px) {
     .header {
         height: 60px;
     }
     .name__person {
         font-size: 20px;
     }
-    
+
     .section__card {
         flex-wrap: wrap;
     }
-    .sentence__two{
-        text-align: start;
-        padding-top: 0px;
+    .div__card {
+        margin: 10px;
+        height: 250px;
+        width: 400px;
+        .card__box {
+            .box__sentence {
+                h2 {
+                    color: white;
+                    font-size: 20px;
+                    font-weight: 100;
+                }
+            }
+        }
     }
-  }
+    .sentence__two {
+        text-align: start;
+        padding-top: 25px;
+    }
+}
 
-
-
-  /* For mobiles */
+/* For mobiles */
 @media screen and (max-width: 501px) {
     .header {
         height: 50px;
@@ -147,21 +182,34 @@
     .name__person {
         font-size: 15px;
     }
-    
+
     .section__card {
         flex-direction: column;
     }
-    
+
     .div__card {
         margin: 10px;
         height: 180px;
         width: 300px;
+        .card__box {
+            .box__sentence {
+                h2 {
+                    color: white;
+                    font-size: 18px;
+                    font-weight: 200;
+                }
+            }
+            .amount{
+                .number_shown{
+                    color: white;
+                    font-size: 22px;
+                    font-weight: 200;
+                }
+            }
+        }
     }
-    .sentence__two{
+    .sentence__two {
         text-align: start;
         padding-top: 0px;
     }
-  }
-  
-  
- 
+}
