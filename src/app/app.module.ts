@@ -9,6 +9,7 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { DoughnutChartsComponent } from './components/doughnut-charts/doughnut-charts.component';
 import { ScssCardsComponent } from './components/scss-cards/scss-cards.component';
+import {  HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ScssCardsComponent } from './components/scss-cards/scss-cards.component
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule
 
   ],
   providers: [],
