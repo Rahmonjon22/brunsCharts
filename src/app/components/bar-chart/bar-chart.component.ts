@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { ChartType } from 'chart.js';
 import * as moment from 'moment';
 import { BaseDataService } from 'src/app/base-data.service';
@@ -15,22 +15,19 @@ export class BarChartComponent implements OnInit {
   rate: string = 'abcd';
   start_date: any;
   end_date: any;
-  slectDate:any; 
- 
-  constructor (private baseDataService: BaseDataService) {
-    // this.chart = this.chart;
+  slectDate: any;
 
-
+  constructor(private baseDataService: BaseDataService) {
 
   }
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels = ['Minden', 'Lübbecke', 'Bad Oeynhausen' ];
+  public barChartLabels = ['Minden', 'Lübbecke', 'Bad Oeynhausen'];
   public barChartType: ChartType = 'bar';
-  public barChartLegend = true; 
-  
+  public barChartLegend = true;
+
   public barChartData = [
     { data: [], label: 'Minden' },
     { data: [], label: 'Lübbecke' },
@@ -44,12 +41,8 @@ export class BarChartComponent implements OnInit {
   getData() {
     this.start_date = moment().subtract(7, 'days');
     this.end_date = moment();
-
-
     this.baseDataService.makeGetCall('complaints').subscribe((complaints) => {
       this.complaints = complaints;
-
-
       if (this.complaints.length > 0) {
         for (let i = 0; i < this.complaints.length; i++) {
           const element = this.complaints[i];
@@ -60,59 +53,48 @@ export class BarChartComponent implements OnInit {
           } else {
             element.product_name = "Bad Oeynhausen";
           }
-        element.full_date=moment(element.claim_date * 1000)
-
+          element.full_date = moment(element.claim_date * 1000)
         }
         this.generateChart()
       }
 
       console.log(this.complaints);
-      
+
     })
   }
 
-  onDateChange(event:any){
-    //this.slectDate=ev
-    this.slectDate=event.target.value;
- 
-   this.filterDate(this.slectDate);
-    
+  onDateChange(event: any) {
+    this.slectDate = event.target.value;
+    this.filterDate(this.slectDate);
   }
+  generateChart() {
+    let Minden = [];
+    let mindenTotal = 0;
+    let lubbeckeTotal = 0;
+    let badOeynhausenTotal = 0;
+    for (let i = 0; i < this.complaints.length; i++) {
+      const element = this.complaints[i];
 
-  generateChart(){
-
-
-    var Minden =[];
-    var minTot=0;
-    var lubTot=0;
-    var badTotal=0;
-   for (let i = 0; i < this.complaints.length; i++) {
-    const element = this.complaints[i];
-   
-    if (element.product=='1') {
-      minTot+=parseInt(element.reason);
-    }else if (element.product=='2') {
-      lubTot+=parseInt(element.reason);
-    }else {
-      badTotal+= parseInt(element.reason);
+      if (element.product == '1') {
+        mindenTotal += parseInt(element.reason);
+      } else if (element.product == '2') {
+        lubbeckeTotal += parseInt(element.reason);
+      } else {
+        badOeynhausenTotal += parseInt(element.reason);
+      }
     }
-   }
-   const result : number[] = [minTot,lubTot,badTotal];
+    const result: number[] = [mindenTotal, lubbeckeTotal, badOeynhausenTotal];
 
-   this.barChartData=[
-    {
-      label: "Total Complaints",
-
-      data: result as any
-    }
-  ]
-
-
-
+    this.barChartData = [
+      {
+        label: "Total Complaints",
+        data: result as any
+      }
+    ]
   }
-  filterDate(date:any){
-    this.complaints=this.complaints.filter(x=>x.full_date.format('YYYY-MM-DD')==date)
-this.generateChart()
+  filterDate(date: any) {
+    this.complaints = this.complaints.filter(x => x.full_date.format('YYYY-MM-DD') == date)
+    this.generateChart()
 
   }
 }
