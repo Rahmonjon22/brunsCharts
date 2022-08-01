@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartType } from 'chart.js';
 import * as moment from 'moment';
 import { Label, MultiDataSet } from 'ng2-charts';
-import { BaseDataService } from 'src/app/base-data.service';
+import { BaseDataService } from 'src/app/shared/services/base-data.service';
 import { Complaint } from 'src/app/models/complains';
 
 @Component({
@@ -23,9 +23,9 @@ export class DoughnutChartsComponent implements OnInit {
     scaleShowVerticalLines: true,
     responsive: true
   };
-  // "line" | "bar" | "horizontalBar" | "radar" | "doughnut" | "polarArea" | "bubble" | "pie" | "scatter"
+
   public barChartLabels = ['Minden', 'Lübbecke', 'Bad Oeynhausen'];
-  public barChartType: ChartType = 'doughnut';
+  public barChartType: ChartType = 'pie';
   public barChartLegend = true;
 
   public barChartData = [

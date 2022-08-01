@@ -1,7 +1,13 @@
 .card{
     height: 485px;
-}
-.form-control{
-    
-    width: 50%;
+    .p-3{
+        .date{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgb(247, 213, 213);
+        }
+    }
 }

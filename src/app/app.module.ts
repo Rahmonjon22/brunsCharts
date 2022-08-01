@@ -10,6 +10,10 @@ import { DoughnutChartsComponent } from './components/doughnut-charts/doughnut-c
 import { ScssCardsComponent } from './components/scss-cards/scss-cards.component';
 import {  HttpClientModule } from '@angular/common/http';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,8 +28,11 @@ import {  HttpClientModule } from '@angular/common/http';
     MatIconModule,
     BrowserAnimationsModule,
     ChartsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

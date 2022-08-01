@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-
 export class BaseDataService {
 
   baseUrl: string='';

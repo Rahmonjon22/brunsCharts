@@ -1,7 +1,17 @@
-<div class="card mt-5" >
-  <div class="p-3" >
+<div class="card mt-5">
+
+  <div class="p-3">
     <h2>Visit & Statistics</h2>
-    <input type="date" ngbDatepicker (change)="onDateChange($event)" class="form-control">
+    <!-- <input type="date" ngbDatepicker (change)="onDateChange($event)" class="form-control"> -->
+    <mat-form-field appearance="outline">
+      <mat-label>Select date range</mat-label>
+      <mat-date-range-input [rangePicker]="brunsdate_picker" [formGroup]="range">
+        <input matStartDate placeholder="Start date" formControlName="start" #startDate>
+        <input matEndDate placeholder="End date" formControlName="end" #endDate (dateChange)="dateRangeChanged(startDate,endDate)" >
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="brunsdate_picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #brunsdate_picker ></mat-date-range-picker>
+    </mat-form-field>
 
     <hr>
   </div>
@@ -9,14 +19,10 @@
   <div style="text-align:center;">
     <div>
       <div style="display: block">
-        <canvas baseChart
-                [datasets]="barChartData"
-                [labels]="barChartLabels"
-                [options]="barChartOptions"
-                [legend]="barChartLegend"
-                [chartType]="barChartType">
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+          [legend]="barChartLegend" [chartType]="barChartType">
         </canvas>
-      
+
       </div>
     </div>
   </div>
