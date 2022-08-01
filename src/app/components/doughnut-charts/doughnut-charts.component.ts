@@ -16,29 +16,33 @@ export class DoughnutChartsComponent implements OnInit {
   rate: string = 'abcd';
   start_date: any;
   end_date: any;
-  // private baseDataService:BaseDataService for constructor
-  constructor(private baseDataService: BaseDataService) { }
-  public doughnutChartOptions = {
-    legend: { display: false }, responsive: true,
-    maintainAspectRatio: false
+  selectDate: any;
+
+  constructor(private baseDataService: BaseDataService) {  }
+  public barChartOptions = {
+    scaleShowVerticalLines: true,
+    responsive: true
   };
-  doughnutChartLabels: Label[] = ['Minden', 'Lübbecke', 'Bad Oeynhausen'];
-  doughnutChartData: MultiDataSet = [
-    [55, 25, 20]
+  // "line" | "bar" | "horizontalBar" | "radar" | "doughnut" | "polarArea" | "bubble" | "pie" | "scatter"
+  public barChartLabels = ['Minden', 'Lübbecke', 'Bad Oeynhausen'];
+  public barChartType: ChartType = 'doughnut';
+  public barChartLegend = true;
+
+  public barChartData = [
+    { data: [], label: 'Minden' },
+    { data: [], label: 'Lübbecke' },
+    { data: [], label: 'Bad Oeynhausen' }
   ];
-  doughnutChartType: ChartType = 'doughnut';
+
   ngOnInit(): void {
-    // this.getData()
+    this.getData()
   }
 
   getData() {
     this.start_date = moment().subtract(7, 'days');
     this.end_date = moment();
-
-
     this.baseDataService.makeGetCall('complaints').subscribe((complaints) => {
       this.complaints = complaints;
-
 
       if (this.complaints.length > 0) {
         for (let i = 0; i < this.complaints.length; i++) {
@@ -50,18 +54,50 @@ export class DoughnutChartsComponent implements OnInit {
           } else {
             element.product_name = "Bad Oeynhausen";
           }
-        element.full_date=moment(element.claim_date * 1000)
-
+          element.full_date = moment(element.claim_date * 1000)
         }
+        this.generateChart()
       }
-      this.filtered_complaints = this.complaints.filter(x => moment(x.claim_date * 1000).isSameOrAfter(this.start_date) && moment(x.claim_date * 1000).isSameOrBefore(this.end_date));
 
-      console.log(this.complaints.length);
-      console.log(this.complaints);
+      // console.log(this.complaints);
 
-
-      console.log(this.filtered_complaints.length);
-      
     })
+  }
+
+  onDateChange(event: any) {
+    this.selectDate = event.target.value;
+    this.filterDate(this.selectDate);
+  }
+  generateChart() {
+    const Minden = [];
+    let mindenTotal = 0;
+    let lubbeckeTotal = 0;
+    let badOeynhausenTotal = 0;
+    for (let i = 0; i < this.complaints.length; i++) {
+      const element = this.complaints[i];
+
+      if (element.product == '1') {
+        mindenTotal += parseInt(element.reason);
+      } else if (element.product == '2') {
+        lubbeckeTotal += parseInt(element.reason);
+      } else {
+        badOeynhausenTotal += parseInt(element.reason);
+      }
+    }
+    const result: number[] = [mindenTotal, lubbeckeTotal, badOeynhausenTotal];
+
+    this.barChartData = [
+      {
+        label: "Overall complaints",
+        data: result as any
+      }
+    ]
+  }
+  filterDate(date: any) {
+    console.log(this.complaints);
+
+    this.complaints = this.complaints.filter(x => x.full_date.format('YYYY-MM-DD') == date)
+    this.generateChart()
+
   }
 }

@@ -1,39 +1,18 @@
 <div class="card mt-5">
   <div class="p-3">
-    <h4>Traffic Sources</h4>
+    <h4>Overall complains</h4>
     <hr />
   </div>
 
-  <div class="chart-wrapper" style="height: 200px;">
-    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-      [options]="doughnutChartOptions">
-    </canvas>
+  <div class="chart-wrapper" style="height: 400px;">
+    <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
   </div>
 
-  <div class="p-3">
-
-
-    <div class="row">
-      <div class="col-md-9">
-        <p>Minden</p>
-      </div>
-      <div class="col-md-3">55%</div>
-    </div>
-    <hr>
-
-    <div class="row">
-      <div class="col-md-9">
-        <p>Lübbecke</p>
-      </div>
-      <div class="col-md-3">25%</div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-9">
-        <p>Bad Oeynhausen</p>
-      </div>
-      <div class="col-md-3">20%</div>
-    </div>
-
-  </div>
+  
 </div>

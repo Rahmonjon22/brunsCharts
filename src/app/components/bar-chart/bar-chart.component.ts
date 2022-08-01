@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartType } from 'chart.js';
 import * as moment from 'moment';
 import { BaseDataService } from 'src/app/base-data.service';
@@ -15,15 +15,14 @@ export class BarChartComponent implements OnInit {
   rate: string = 'abcd';
   start_date: any;
   end_date: any;
-  slectDate: any;
+  selectDate: any;
 
-  constructor(private baseDataService: BaseDataService) {
-
-  }
+  constructor(private baseDataService: BaseDataService) {  }
   public barChartOptions = {
-    scaleShowVerticalLines: false,
+    scaleShowVerticalLines: true,
     responsive: true
   };
+  // "line" | "bar" | "horizontalBar" | "radar" | "doughnut" | "polarArea" | "bubble" | "pie" | "scatter"
   public barChartLabels = ['Minden', 'Lübbecke', 'Bad Oeynhausen'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
@@ -43,6 +42,7 @@ export class BarChartComponent implements OnInit {
     this.end_date = moment();
     this.baseDataService.makeGetCall('complaints').subscribe((complaints) => {
       this.complaints = complaints;
+
       if (this.complaints.length > 0) {
         for (let i = 0; i < this.complaints.length; i++) {
           const element = this.complaints[i];
@@ -58,17 +58,17 @@ export class BarChartComponent implements OnInit {
         this.generateChart()
       }
 
-      console.log(this.complaints);
+      // console.log(this.complaints);
 
     })
   }
 
   onDateChange(event: any) {
-    this.slectDate = event.target.value;
-    this.filterDate(this.slectDate);
+    this.selectDate = event.target.value;
+    this.filterDate(this.selectDate);
   }
   generateChart() {
-    let Minden = [];
+    const Minden = [];
     let mindenTotal = 0;
     let lubbeckeTotal = 0;
     let badOeynhausenTotal = 0;
@@ -87,12 +87,14 @@ export class BarChartComponent implements OnInit {
 
     this.barChartData = [
       {
-        label: "Total Complaints",
+        label: "Overall complaints",
         data: result as any
       }
     ]
   }
   filterDate(date: any) {
+    console.log(this.complaints);
+
     this.complaints = this.complaints.filter(x => x.full_date.format('YYYY-MM-DD') == date)
     this.generateChart()
 
